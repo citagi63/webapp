@@ -8,39 +8,82 @@
     <script src="division.js"></script>
     <script src="clear.js"></script>
     <style>
+        /* Animated gradient background */
         body {
-            background: linear-gradient(135deg, #ff416c, #ff4b2b); /* punchy pink-orange gradient */
-            color: white;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff7f50, #1e90ff, #ff4500, #00bfff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        /* Calculator box */
+        .calculator {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
             text-align: center;
-            padding: 50px;
+            color: white;
         }
+
         input {
-            margin: 5px;
-            padding: 5px;
-            border-radius: 5px;
-            border: none;
-        }
-        button {
-            margin: 5px;
-            padding: 10px 15px;
+            margin: 10px 0;
+            padding: 10px;
+            width: 200px;
             border-radius: 8px;
             border: none;
-            cursor: pointer;
-            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
         }
+
+        button {
+            margin: 8px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Individual button colors */
+        .add { background-color: #ff7f50; color: white; }
+        .sub { background-color: #1e90ff; color: white; }
+        .mul { background-color: #ff4500; color: white; }
+        .div { background-color: #00bfff; color: white; }
+        .exit { background-color: #ff1493; color: white; }
     </style>
 </head>
 <body>
-    <h2>Basic Calculator</h2>
-    Enter first no   <input type="text" id="first no"/> <br/><br/>
-    Enter second no  <input type="text" id="second no"/> <br/><br/>
-    Result           <input type="text" id="result" readonly/><br/><br/>
-    
-    <button style="color: red" onclick="add()">Add</button>
-    <button style="color: blue" onclick="subtract()">Subtract</button>
-    <button style="color: deeppink" onclick="mul()">Multiplication</button>
-    <button style="color: coral" onclick="divide()">Division</button>
-    <button style="color: brown" onclick="clearFields()">Exit</button>
+    <div class="calculator">
+        <h2>Basic Calculator</h2>
+        <input type="text" id="first no" placeholder="Enter first number"><br/>
+        <input type="text" id="second no" placeholder="Enter second number"><br/>
+        <input type="text" id="result" placeholder="Result" readonly><br/>
+        
+        <button class="add" onclick="add()">Add</button>
+        <button class="sub" onclick="subtract()">Subtract</button>
+        <button class="mul" onclick="mul()">Multiply</button>
+        <button class="div" onclick="divide()">Divide</button>
+        <button class="exit" onclick="clearFields()">Exit</button>
+    </div>
 </body>
 </html>
