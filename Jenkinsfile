@@ -1,7 +1,8 @@
 pipeline {
 
     agent any
- 
+   tools{ 
+   maven 'jemday1'}
     stages {
 
         stage('Checkout') {
